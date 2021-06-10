@@ -1,0 +1,383 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>FIMARx</title>
+	<link href="style.css" rel="stylesheet" />
+	<link rel="icon" href="/Media/favicon.ico" />
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+	<section class="navigation">
+		<div class="nav-container">
+			<div class="brand"> <a href="index.html"><i class="fa fa-user-circle-o"></i> FIMARx</a></div> 
+			<nav>
+				<div class="nav-mobile"> <a id="nav-toggle" href="#!"><span></span></a> </div>
+				<ul class="nav-list">
+					<li><a href="index.html"><i class="fas fa-home"></i>  Home</a></li>
+					<li><a href="#!"><i class="fa fa-book"></i>  Files & Projects</a></li>
+					<li><a href="#!"><i class="fas fa-envelope"></i>  Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+	<section class="BvidG">
+		<video src="Media/test.mp4" muted loop autoplay></video>
+		<div class="overlay"></div>
+		<div class="text">
+			<div class="box">
+				<div class="header">
+					<div class="colorable"> <span class="grows"><img src="Media/gazette.png" /></span><span style="wInfo">FIMARx's </span><span style="color: aquamarine;">information</span> </div>
+				</div>
+				<div class="colorable"> Hello, I'm 19 years old guy from Finland. I like to code, workout and to play video games. I'm mostly positive and continuously having an smile in my face. I'm a android user and I like to play in my mobile:
+					<br /> • Clash Royale <span style="color: aqua;">IGN</span>: FIMARx
+					<br /> • Clash Of Clans <span style="color: aqua;">IGN</span>: FIMARx
+					<br /> • Growtopia <span style="color: aqua;">IGN</span>: FIMARx
+					<br /> • Nebulous <span style="color: aqua;">IGN</span>: Sad PePe </div>
+				<br /> I like to edit on my mobile as well. I mostly use for photo editing <span style="color: blue;">PS toch</span> and <span style="color: #3fa2e4;">PixelLab</span>. For video editing I use <span style="color: #fe7363;">Kinemaster</span> and <span style="color: #8b6eff;">VivaCut</span>.
+				<br />
+				<br /> I use pc for coding and playing FPS games. FPS games I like to play are:
+				<br /> • Counter-Strike: Global Offensive
+				<br /> • Battlefield
+				<br /> • Call Of Duty
+				<br /> • Krunker
+				<br /> • Age of Empires II: Definitive Edition
+				<br />
+				<br /> I like to code using <span style="color: #29abe2;">Brackets</span> and <span style="color: #be90f3;">Visual Studio</span>.
+				<br /> I rarely use PC to edit videos or pictures maybe in future but currently my phone does that work. </div>
+			<!-- <a href="#">Explore</a> --></div>
+	</section>
+</body>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+	text-decoration: none;
+	list-style: none;
+}
+
+nav {
+	float: right;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	float: left;
+	position: relative;
+}
+
+nav ul li a {
+	display: block;
+	padding: 0 20px;
+	line-height: 70px;
+	background: #ffffff;
+	color: #463f3f;
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	background: #f2f2f2;
+	animation: RGB 5s linear 0s infinite alternate;
+}
+
+nav ul li a:not(:only-child):after {
+	padding-left: 4px;
+	content: ' ▾';
+}
+
+nav ul li ul li {
+	min-width: 190px;
+}
+
+nav ul li ul li a {
+	padding: 15px;
+	line-height: 20px;
+}
+
+.nav-mobile {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #fff;
+	height: 70px;
+	width: 70px;
+}
+
+@media only screen and (max-width: 800px) {
+	.nav-mobile {
+		display: block;
+	}
+	nav {
+		width: 100%;
+		padding: 70px 0 15px;
+	}
+	nav ul {
+		display: none;
+	}
+	nav ul li {
+		float: none;
+	}
+	nav ul li a {
+		padding: 15px;
+		line-height: 20px;
+	}
+	nav ul li ul li a {
+		padding-left: 30px;
+	}
+}
+
+#nav-toggle {
+	position: absolute;
+	left: 18px;
+	top: 22px;
+	cursor: pointer;
+	padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+	cursor: pointer;
+	border-radius: 1px;
+	height: 5px;
+	width: 35px;
+	background: #463f3f;
+	position: absolute;
+	display: block;
+	content: '';
+	transition: all 300ms ease-in-out;
+}
+
+#nav-toggle span:before {
+	top: -10px;
+}
+
+#nav-toggle span:after {
+	bottom: -10px;
+}
+
+#nav-toggle.active span {
+	background-color: transparent;
+}
+
+#nav-toggle.active span:before,
+#nav-toggle.active span:after {
+	top: 0;
+}
+
+#nav-toggle.active span:before {
+	transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+	transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 800px) {
+	.nav-list {
+		display: block !important;
+	}
+}
+
+.navigation {
+	height: 70px;
+	background: #ffffff;
+}
+
+.nav-container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.brand {
+	position: absolute;
+	padding-left: 20px;
+	float: left;
+	line-height: 70px;
+	text-transform: uppercase;
+	font-size: 1.4em;
+}
+
+.brand a,
+.brand a:visited {
+	color: #463f3f;
+	text-decoration: none;
+	animation: RGB 5s linear 0s infinite alternate;
+}
+
+@keyframes RGB {
+	100%,
+	0% {
+		color: rgb(255, 0, 0);
+	}
+	8% {
+		color: rgb(255, 127, 0);
+	}
+	16% {
+		color: rgb(255, 255, 0);
+	}
+	25% {
+		color: rgb(127, 255, 0);
+	}
+	33% {
+		color: rgb(0, 255, 0);
+	}
+	41% {
+		color: rgb(0, 255, 127);
+	}
+	50% {
+		color: rgb(0, 255, 255);
+	}
+	58% {
+		color: rgb(0, 127, 255);
+	}
+	66% {
+		color: rgb(0, 0, 255);
+	}
+	75% {
+		color: rgb(127, 0, 255);
+	}
+	83% {
+		color: rgb(255, 0, 255);
+	}
+	91% {
+		color: rgb(255, 0, 127);
+	}
+}
+
+.BvidG {
+	position: absolute;
+	right: 0;
+	width: 100%;
+	min-height: 100vh;
+	padding: 100px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #111;
+	transition: 0.5s;
+	z-index: 2;
+}
+
+.BvidG.active {
+	right: 300px;
+}
+
+.BvidG video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.8;
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #03a9f4;
+	mix-blend-mode: overlay;
+}
+
+.text {
+	position: relative;
+	z-index: 10;
+}
+
+.text a {
+	display: inline-block;
+	font-size: 1em;
+	background: #fff;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: 500;
+	margin-top: 10px;
+	color: #111;
+	letter-spacing: 2px;
+	transition: 0.2s;
+}
+
+.text a:hover {
+	letter-spacing: 6px;
+}
+
+.menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 300px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu ul {
+	position: relative;
+}
+
+.menu ul li {
+	list-style: none;
+}
+
+.menu ul li a {
+	text-decoration: none;
+	font-size: 24px;
+	color: #111;
+}
+
+.menu ul li a:hover {
+	color: #03a9f4;
+}
+
+.box {
+	background: #4481a6bf;
+	border-radius: 5px;
+	border: 5px solid #89c3d6;
+	color: #fff;
+	box-shadow: 3px 3px #000000, 3px 3px #000000 inset;
+	font-family: Century Gothic, sans-serif;
+	font-weight: bold;
+	padding: 5px 15px;
+	margin: 0 3px 3px;
+	font-size: 20px;
+	text-align: left;
+}
+
+.box .grows {
+	vertical-align: text-bottom;
+	margin-right: 10px;
+}
+
+.colorable {
+	color: white;
+	font-family: Century Gothic, sans-serif;
+	font-size: 20px;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+}
+</style>
+<script>
+const BvidG = document.querySelector(".BvidG");
+</script>
+
+</html>
