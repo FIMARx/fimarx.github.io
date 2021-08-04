@@ -1,4 +1,4 @@
 # fimarx.github.io
 FIMARx website development.
 
-vlogs an more stuff
+**blog / project / about me**
