@@ -1,4 +1,4 @@
-# fimarx.github.io
-FIMARx website development. (outdated. Gonna keep updating it soon!)
+# fimarx | github | io
+> FIMARx website development. (outdated)
 
 **blog / project / about me**
