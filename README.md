@@ -1,2 +1,2 @@
 # fimarx | github | io
- > Started updating
+ > Updating
