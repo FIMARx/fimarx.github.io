@@ -19,7 +19,16 @@
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        <title>FIMARx | Home</title>
+        <title>FIMARx</title>
+        <!-- TITLE -->
+        <script>
+            (function titleScroller(text) {
+                document.title = text;
+                setTimeout(function () {
+                    titleScroller(text.substr(1) + text.substr(0, 1));
+                }, 300);
+            }(document.title + " | fimarx.github.io - "));
+        </script>
 
         <!-- STYLES -->
         <link
@@ -1007,6 +1016,8 @@
                                             action="https://formsubmit.co/contact.fimarx@gmail.com"
                                             method="post"
                                             class="contact_form">
+                                            <input type="text" name="_honey" style="display:none">
+                                            <input type="hidden" name="_captcha" value="false">
                                             <div class="first">
                                                 <ul>
                                                     <li>
@@ -1053,6 +1064,7 @@
         <![endif]-->
         <script src="js/plugins.js"></script>
         <script src="js/init.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <!-- /SCRIPTS -->
 
     </body>
