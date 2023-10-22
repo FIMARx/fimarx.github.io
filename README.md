@@ -1,2 +1,2 @@
-# fimarx | github | io
+# FIMARx main page.
  > Updating
