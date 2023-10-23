@@ -1,2 +1,1 @@
-# FIMARx main page.
- > Updating
+# FIMARx main page
