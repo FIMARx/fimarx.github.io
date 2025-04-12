@@ -1,53 +1,82 @@
 <!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
+<!--<![endif]-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <meta name="description" content="FIMARx" />
+    <meta name="author" content="FIMARx" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Thank You - FIMARx</title>
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: #1e1e1e;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .thank-you-container {
-            padding: 2rem;
-            max-width: 600px;
-        }
-        h1 {
-            color: #4169e1;
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        .back-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #4169e1;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .back-button:hover {
-            background: #2850c8;
-        }
-    </style>
+
+    <!-- STYLES -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/plugins.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <!-- /STYLES -->
 </head>
+
 <body>
-    <div class="thank-you-container">
-        <h1>Thank You!</h1>
-        <p>Your message has been successfully sent. I'll get back to you as soon as possible.</p>
-        <a href="index.html" class="back-button">Back to Homepage</a>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader_line"></div>
     </div>
+    <!-- /PRELOADER -->
+
+    <!-- WRAPPER ALL -->
+    <div class="edrea_tm_all_wrap" data-magic-cursor="show" data-enter="fadeInUp" data-exit="">
+        <!-- WAVE DOTS -->
+        <div class="waves"></div>
+        <!-- /WAVE DOTS -->
+
+        <!-- CONTENT -->
+        <div class="edrea_tm_content">
+            <div class="edrea_tm_section animated">
+                <div class="section_inner">
+                    <div class="edrea_tm_about" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+                        <div class="right" style="text-align: center;">
+                            <div class="short">
+                                <h3 class="name">Thank <span class="coloring">You!</span></h3>
+                                <p style="font-size: 1.2rem; margin: 20px 0;">
+                                    Your message has been successfully sent. I'll get back to you as soon as possible.
+                                </p>
+                                <div class="edrea_tm_button" style="justify-content: center;">
+                                    <a href="index.html">
+                                        <i class="icon-home-1"></i>
+                                        Back to Homepage
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /CONTENT -->
+
+        <!-- MAGIC CURSOR -->
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
+        <!-- /MAGIC CURSOR -->
+    </div>
+    <!-- /WRAPPER ALL -->
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery.js"></script>
+    <!--[if lt IE 10]>
+        <script type="text/javascript" src="js/ie8.js"></script>
+    <![endif]-->
+    <script src="js/plugins.js"></script>
+    <script src="js/init.js"></script>
+    <!-- /SCRIPTS -->
 </body>
 </html>
