@@ -22,6 +22,80 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="js/modernizr.custom.js"></script>
     <![endif]-->
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        .edrea_tm_all_wrap {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .edrea_tm_content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .edrea_tm_section {
+            width: 100%;
+        }
+        .section_inner {
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .edrea_tm_about {
+            min-height: auto !important;
+            width: 100%;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+        }
+        .right {
+            float: none;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .short {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .edrea_tm_button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .edrea_tm_button a {
+            margin: 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
     <!-- /STYLES -->
 </head>
 
@@ -42,14 +116,14 @@
         <div class="edrea_tm_content">
             <div class="edrea_tm_section animated">
                 <div class="section_inner">
-                    <div class="edrea_tm_about" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
-                        <div class="right" style="text-align: center;">
+                    <div class="edrea_tm_about">
+                        <div class="right">
                             <div class="short">
                                 <h3 class="name">Thank <span class="coloring">You!</span></h3>
                                 <p style="font-size: 1.2rem; margin: 20px 0;">
                                     Your message has been successfully sent. I'll get back to you as soon as possible.
                                 </p>
-                                <div class="edrea_tm_button" style="justify-content: center;">
+                                <div class="edrea_tm_button">
                                     <a href="index.html">
                                         <i class="icon-home-1"></i>
                                         Back to Homepage
