@@ -133,7 +133,7 @@ function edrea_tm_modalbox() {
 
   jQuery(".edrea_tm_all_wrap").prepend(
     '<div class="edrea_tm_modalbox"><div class="box_inner"><div class="close"><a hr' +
-      'ef="#"><i class="icon-cancel"></i></a></div><div class="description_wrap"></di' +
+      'ef="#"><i class="fa-solid fa-xmark"></i></a></div><div class="description_wrap"></di' +
       "v></div></div>"
   );
 }
@@ -805,3 +805,4 @@ function edrea_tm_switcher_opener() {
     return false;
   });
 }
+

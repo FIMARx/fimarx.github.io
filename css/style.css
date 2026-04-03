@@ -2374,3 +2374,111 @@ h6 {
         margin-bottom: 18px;
     }
 }
+
+/*---------------------------------------------------*/
+/*	2026 PREMIUM OVERRIDES
+/*---------------------------------------------------*/
+body { font-family: 'Inter', sans-serif !important; background-color: #0b0b10 !important; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.5px !important; }
+
+/* Contact Form Input Restyling */
+.modern_input_wrap {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+}
+.modern_input_wrap:focus-within {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    border-color: var(--main-color) !important;
+    box-shadow: 0 0 0 4px rgba(250, 91, 15, 0.1) !important; /* Glow matching main color roughly */
+}
+.modern_input_wrap .input_icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+.modern_input_wrap:focus-within .input_icon {
+    color: var(--main-color);
+}
+.edrea_tm_contact .fields .first ul li input, 
+.edrea_tm_contact .fields .last textarea {
+    padding-left: 50px !important;
+    font-family: 'Inter', sans-serif !important;
+}
+.edrea_tm_contact .fields .last .input_icon {
+    top: 35px;
+}
+.edrea_tm_contact .fields .last textarea {
+    padding-top: 25px !important;
+}
+.edrea_tm_contact .empty_notice {
+    margin-bottom: 15px !important;
+}
+
+/* Glass Panels */
+.edrea_tm_contact .wrapper .left ul li .list_inner {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.edrea_tm_contact .wrapper .left ul li .list_inner:hover {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Inner */
+.edrea_tm_modalbox .box_inner {
+    background-color: rgba(30, 30, 35, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+.edrea_tm_modalbox .description_wrap::before,
+.edrea_tm_modalbox .description_wrap::after {
+    background-color: rgba(30, 30, 35, 0.95) !important;
+}
+
+/* Buttons */
+.edrea_tm_button a {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(250, 91, 15, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.edrea_tm_button a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(250, 91, 15, 0.5);
+    background-color: var(--main-color) !important;
+    color: #fff !important;
+}
+
+/* About Section Enhancements */
+.edrea_tm_about .right .short {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Custom Cursor Fixes for 2026 */
+.cursor-inner { mix-blend-mode: difference; background-color: #fff !important; transform-origin: center; }
+.cursor-outer { border-color: rgba(255,255,255,0.3) !important; }
+.cursor-hover { transform: scale(1.5); opacity: 0.5; }
+
+/* Waves Background Obfuscation & Ambient Glow Fix */
+.waves {
+    opacity: 0.4;
+    filter: blur(30px);
+    background: radial-gradient(circle at 50% 50%, rgba(250, 91, 15, 0.08) 0%, rgba(0, 0, 0, 0) 50%);
+}
+
