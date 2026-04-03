@@ -2646,10 +2646,6 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     padding-top: 15px !important; /* Match the label top */
 }
 
-.floating_input_wrap label {
-    top: 15px !important;
-}
-
 /* Animation scaling correction for the icon */
 .floating_input_wrap input:focus ~ label .input_icon,
 .floating_input_wrap textarea:focus ~ label .input_icon,
