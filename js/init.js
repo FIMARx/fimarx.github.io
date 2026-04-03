@@ -553,8 +553,33 @@ function edrea_tm_contact_form() {
       return; // Stop form submission
     }
 
-    // If all fields are filled and email is valid, submit the form
-    $form.submit();
+    // If all fields are filled and email is valid, submit the form via AJAX
+    var actionUrl = $form.attr("action");
+    var formData = new FormData($form[0]);
+
+    // Update button text to show loading state
+    var originalBtnText = $form.find("#sendMessageButton").html();
+    $form.find("#sendMessageButton").html("Sending... <i class='icon-spin'></i>");
+
+    fetch(actionUrl, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(function(response) {
+      if (response.ok) {
+        $form.find(".first, .last, .edrea_tm_button").slideUp(300);
+        $form.find(".return_message").slideDown(300);
+        $form[0].reset();
+      } else {
+        $form.find(".empty_notice").html("<span>An error occurred. Please try again.</span>").slideDown(500).delay(2000).slideUp(500);
+        $form.find("#sendMessageButton").html(originalBtnText);
+      }
+    }).catch(function(error) {
+      $form.find(".empty_notice").html("<span>Network error. Please try again.</span>").slideDown(500).delay(2000).slideUp(500);
+      $form.find("#sendMessageButton").html(originalBtnText);
+    });
   });
 }
 
