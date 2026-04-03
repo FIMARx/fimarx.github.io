@@ -2482,3 +2482,89 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     background: radial-gradient(circle at 50% 50%, rgba(250, 91, 15, 0.08) 0%, rgba(0, 0, 0, 0) 50%);
 }
 
+
+/*---------------------------------------------------*/
+/*	2026 FLOATING LABELS ADDON
+/*---------------------------------------------------*/
+/* Floating Labels (Premium 2026) */
+.floating_input_wrap {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+.floating_input_wrap input,
+.floating_input_wrap textarea {
+    width: 100%;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 15px 15px 15px 45px !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #fff !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+    border-radius: 0 !important;
+}
+
+.floating_input_wrap textarea {
+    height: 120px !important;
+    resize: none;
+}
+
+.floating_input_wrap label {
+    position: absolute;
+    left: 0px;
+    top: 15px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: flex;
+    align-items: center;
+}
+
+.floating_input_wrap .input_icon {
+    font-size: 16px;
+    width: 35px;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.floating_input_wrap input:focus,
+.floating_input_wrap textarea:focus,
+.floating_input_wrap input:not(:placeholder-shown),
+.floating_input_wrap textarea:not(:placeholder-shown) {
+    border-bottom-color: var(--main-color) !important;
+    box-shadow: 0 1px 0 var(--main-color) !important;
+}
+
+.floating_input_wrap input:focus ~ label,
+.floating_input_wrap textarea:focus ~ label,
+.floating_input_wrap input:not(:placeholder-shown) ~ label,
+.floating_input_wrap textarea:not(:placeholder-shown) ~ label {
+    top: -24px;
+    left: 0px;
+    font-size: 13px;
+    color: var(--main-color);
+    font-weight: 500;
+}
+
+.floating_input_wrap input:focus ~ label .input_icon,
+.floating_input_wrap textarea:focus ~ label .input_icon,
+.floating_input_wrap input:not(:placeholder-shown) ~ label .input_icon,
+.floating_input_wrap textarea:not(:placeholder-shown) ~ label .input_icon {
+    font-size: 13px;
+}
+
+.edrea_tm_contact .fields .first ul li .list_inner.floating_input_wrap,
+.edrea_tm_contact .fields .last .list_inner.floating_input_wrap {
+    background-color: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}

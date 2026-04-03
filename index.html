@@ -61,66 +61,7 @@
       <div class="waves"></div>
       <!-- WAVE DOTS -->
 
-      <!-- SETTINGS -->
-      <div class="edrea_tm_settings">
-        <div class="icon">
-          <img class="svg" src="img/setting.svg" alt="" />
-          <a class="link" href="#"></a>
-        </div>
-        <div class="wrapper">
-          <span class="title">Unlimited Colors</span>
-          <ul class="colors">
-            <li>
-              <a href="#" data-color="#4169e1"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#66B95C"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#ff9800"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#ff5e94"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#fa5b0f"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#f39977"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#9200ee"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#00D4BD"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#5e9e9f"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#EB4A4C"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#666d41"></a>
-            </li>
-            <li>
-              <a href="#" data-color="#fe0000"></a>
-            </li>
-          </ul>
-          <span class="title">Magic Cursor</span>
-          <ul class="cursor">
-            <li>
-              <a class="showme show" href="#"></a>
-            </li>
-            <li>
-              <a class="hide" href="#"
-                ><img class="svg" src="img/arrow.svg" alt=""
-              /></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- /SETTINGS -->
+      <!-- SETTINGS REMOVED -->
 
       <!-- MOBILE MENU -->
       <div class="edrea_tm_topbar">
@@ -206,6 +147,7 @@
                 >
               </li>
             </ul>
+            <span class="ccc"></span>
           </div>
         </div>
       </div>
@@ -232,7 +174,7 @@
                       >Developer
                       <i class="fa-solid fa-code"></i>
                     </b>
-                    <b>Trainer 💪🏻</b>
+                    <b>Trainer <i class="fa-solid fa-dumbbell"></i></b>
                   </span>
                 </span>
               </h3>
@@ -979,36 +921,48 @@
                       <div class="first">
                         <ul>
                           <li>
-                            <div class="list_inner modern_input_wrap">
-                              <i class="fa-solid fa-user input_icon"></i>
+                            <div class="list_inner floating_input_wrap">
                               <input
                                 name="Name"
                                 type="text"
-                                placeholder="Name"
+                                placeholder=" "
                                 autocomplete="off"
+                                id="contact_name"
                               />
+                              <label for="contact_name">
+                                <i class="fa-solid fa-user input_icon"></i>
+                                Name
+                              </label>
                             </div>
                           </li>
                           <li>
-                            <div class="list_inner modern_input_wrap">
-                              <i class="fa-solid fa-envelope input_icon"></i>
+                            <div class="list_inner floating_input_wrap">
                               <input
                                 name="Email"
                                 type="Email"
-                                placeholder="Email"
+                                placeholder=" "
                                 autocomplete="off"
+                                id="contact_email"
                               />
+                              <label for="contact_email">
+                                <i class="fa-solid fa-envelope input_icon"></i>
+                                Email
+                              </label>
                             </div>
                           </li>
                         </ul>
                       </div>
                       <div class="last">
-                        <div class="list_inner modern_input_wrap">
-                          <i class="fa-solid fa-message input_icon"></i>
+                        <div class="list_inner floating_input_wrap">
                           <textarea
                             name="Message"
-                            placeholder="Message"
+                            placeholder=" "
+                            id="contact_message"
                           ></textarea>
+                          <label for="contact_message">
+                            <i class="fa-solid fa-message input_icon"></i>
+                            Message
+                          </label>
                         </div>
                       </div>
                       <div class="edrea_tm_button">
