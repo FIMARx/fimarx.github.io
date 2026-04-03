@@ -2887,42 +2887,49 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
 }
 
 
-/* V7 HOTFIXES FOR TIMELINE AND BORDERS */
-.edrea_tm_modalbox .about_popup_details .left {
-    border-right: none !important;
-}
 
-.edrea_tm_modalbox .about_popup_details .about_title {
-    padding-bottom: 20px !important;
-    margin-bottom: 15px !important;
-}
 
+/* V7 TIMELINE ALIGNMENT PATCH */
 .premium_timeline_section {
     position: relative;
-    padding-bottom: 20px;
 }
 
-.premium_timeline_section::before {
-    content: '';
-    position: absolute;
-    top: 60px;
-    bottom: 50px;
-    left: 7px;
-    width: 2px;
-    background: rgba(255, 255, 255, 0.08);
-    z-index: 1;
-}
-
+/* 1. Remove the broken, separated lines */
 .premium_timeline .timeline_list::before {
     display: none !important;
 }
 
-/* Ensure the header text isn't covered by the vertical line */
-.premium_timeline_section .about_title {
-    background: rgba(30, 30, 35, 1); /* same as modal background to overlay the line if it passes behind */
-    position: relative;
-    z-index: 2;
-    padding-left: 0;
+/* 2. Create the unified, continuous line */
+.premium_timeline_section::before {
+    content: '';
+    position: absolute;
+    top: 60px; /* Starts exactly at the first Work Experience dot */
+    bottom: 40px; /* Ends right under the last Education dot */
+    left: 7px; /* Aligns precisely with the left:0 dot */
+    width: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 0;
 }
 
+/* 3. Hide the ugly template border-right that was confusing you */
+.edrea_tm_modalbox .about_popup_details .left {
+    border-right: none !important;
+}
+
+/* 4. Provide space for the horizontal title dividers ("the other line") */
+.edrea_tm_modalbox .about_popup_details .about_title {
+    padding-bottom: 25px !important;
+    margin-bottom: 20px !important;
+    border-bottom: 1px dashed rgba(255,255,255,.05);
+}
+
+/* 5. Mask the vertical line where it intersects Education Timeline heading */
+.about_title h3 {
+    position: relative;
+    z-index: 2;
+}
+.about_title h3 span {
+    background-color: rgba(30, 30, 35, 1);
+    padding: 0 10px 0 0;
+}
 
