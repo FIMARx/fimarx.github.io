@@ -2886,3 +2886,43 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     transform: translateY(-2px);
 }
 
+
+/* V7 HOTFIXES FOR TIMELINE AND BORDERS */
+.edrea_tm_modalbox .about_popup_details .left {
+    border-right: none !important;
+}
+
+.edrea_tm_modalbox .about_popup_details .about_title {
+    padding-bottom: 20px !important;
+    margin-bottom: 15px !important;
+}
+
+.premium_timeline_section {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.premium_timeline_section::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    bottom: 50px;
+    left: 7px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 1;
+}
+
+.premium_timeline .timeline_list::before {
+    display: none !important;
+}
+
+/* Ensure the header text isn't covered by the vertical line */
+.premium_timeline_section .about_title {
+    background: rgba(30, 30, 35, 1); /* same as modal background to overlay the line if it passes behind */
+    position: relative;
+    z-index: 2;
+    padding-left: 0;
+}
+
+
