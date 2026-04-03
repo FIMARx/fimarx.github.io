@@ -2610,3 +2610,51 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     z-index: -2;
 }
 
+
+/*---------------------------------------------------*/
+/*	V4 HOTFIXES: NAV HITBOX AND CONTACT FORM
+/*---------------------------------------------------*/
+
+/* 1. Mobile & Desktop Nav Hitbox Fixes */
+.edrea_tm_mobile_menu .menu_list ul li a {
+    font-family: 'Outfit', sans-serif !important;
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px !important;
+    width: 100%;
+}
+.edrea_tm_header .menu ul li a {
+    padding: 15px 20px !important; /* Huge clickable area */
+    position: relative;
+    z-index: 10;
+}
+
+/* 2. Contact Form Background and Alignment Fixes */
+.edrea_tm_contact .fields .last {
+    background-color: transparent !important; /* Remove the black #222 box */
+    padding: 0 !important;
+    margin-bottom: 25px !important;
+}
+
+.floating_input_wrap label {
+    left: 10px !important; /* Push it inward so icon doesn't clip outside */
+}
+
+/* Make sure the text area doesn't have an overlapping offset for the icon */
+.floating_input_wrap textarea {
+    padding-top: 15px !important; /* Match the label top */
+}
+
+.floating_input_wrap label {
+    top: 15px !important;
+}
+
+/* Animation scaling correction for the icon */
+.floating_input_wrap input:focus ~ label .input_icon,
+.floating_input_wrap textarea:focus ~ label .input_icon,
+.floating_input_wrap input:not(:placeholder-shown) ~ label .input_icon,
+.floating_input_wrap textarea:not(:placeholder-shown) ~ label .input_icon {
+    font-size: 14px !important;
+    width: 20px !important;
+}
