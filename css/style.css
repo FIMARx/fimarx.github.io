@@ -2654,3 +2654,79 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     font-size: 14px !important;
     width: 20px !important;
 }
+
+/*---------------------------------------------------*/
+/*	V6 PREMIUM CONTACT FORM OVERHAUL
+/*---------------------------------------------------*/
+
+.premium_input_container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+    background: transparent !important;
+}
+
+.premium_input_container input,
+.premium_input_container textarea {
+    width: 100% !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 10px 0px 10px 35px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    color: #fff !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    text-align: left !important;
+    box-shadow: none !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+    transition: all 0.3s ease !important;
+}
+
+.premium_input_container textarea {
+    min-height: 100px !important;
+    resize: none !important;
+    padding-top: 15px !important;
+}
+
+.premium_input_container label {
+    position: absolute !important;
+    left: 0px !important;
+    top: 12px !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    pointer-events: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transform-origin: left top !important;
+}
+
+.premium_input_container .input_icon {
+    font-size: 16px !important;
+    width: 20px !important;
+    text-align: center !important;
+}
+
+.premium_input_container input:focus,
+.premium_input_container textarea:focus,
+.premium_input_container input:not(:placeholder-shown),
+.premium_input_container textarea:not(:placeholder-shown) {
+    border-bottom-color: var(--main-color) !important;
+}
+
+.premium_input_container input:focus ~ label,
+.premium_input_container textarea:focus ~ label,
+.premium_input_container input:not(:placeholder-shown) ~ label,
+.premium_input_container textarea:not(:placeholder-shown) ~ label {
+    transform: translateY(-28px) scale(0.85) !important;
+    color: var(--main-color) !important;
+    font-weight: 600 !important;
+}
+
