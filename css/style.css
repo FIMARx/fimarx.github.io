@@ -2933,3 +2933,39 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     padding: 0 10px 0 0;
 }
 
+
+/* V7 FINAL ALIGNMENT FIX */
+/* 1. Kill the legacy 1px template line that was starting at the bio */
+.edrea_tm_modalbox .about_popup_details .timeline .list ul:before {
+    display: none !important;
+}
+
+/* 2. Adjust NEW premium line to start EXACTLY at the first dot */
+.premium_timeline_section::before {
+    content: '';
+    position: absolute;
+    top: 65px; /* Tuned to start at the Technical Specialist dot */
+    bottom: 50px;
+    left: 7px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 1;
+}
+
+/* 3. Ensure biography and top sections don't have hidden markers */
+.edrea_tm_modalbox .about_popup_details .biography,
+.edrea_tm_modalbox .about_popup_details .service,
+.edrea_tm_modalbox .about_popup_details .prog_skill,
+.edrea_tm_modalbox .about_popup_details .lang_skill {
+    position: relative;
+    border-left: none !important;
+}
+
+/* 4. Mask the line where it passes through titles */
+.premium_timeline .about_title h3 span {
+    background-color: rgba(30, 30, 35, 1);
+    padding-right: 15px;
+    position: relative;
+    z-index: 10;
+}
+
