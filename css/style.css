@@ -2983,3 +2983,50 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     font-weight: 600;
 }
 
+/* V8 FINAL PRECISION ALIGNMENT */
+/* 1. Stop the unified line from leaking into top sections */
+.premium_timeline_section::before {
+    display: none !important; /* Kill the high-level one */
+}
+
+.premium_timeline .timeline_list {
+    position: relative;
+    padding-left: 25px; /* Ensure space for the line and dots */
+}
+
+.premium_timeline .timeline_list::before {
+    content: '';
+    position: absolute;
+    top: 5px; /* Starts exactly at the first orange dot center */
+    bottom: 5px; /* Ends right at the last dot */
+    left: 7px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 0;
+}
+
+/* 2. Nuclear Clear for all template ghost lines */
+.about_popup_details .right .right_inner::before,
+.about_popup_details .right::before,
+.about_popup_details .biography::before,
+.about_popup_details .service::before,
+.about_popup_details .prog_skill::before,
+.about_popup_details .lang_skill::before {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+}
+
+/* 3. Ensure headings are above everything */
+.about_title h3 {
+    position: relative;
+    z-index: 5;
+    background: transparent;
+}
+.about_title h3 span {
+    background-color: #1e1e23; /* Match your dark theme background exactly */
+    padding-right: 15px;
+    position: relative;
+    z-index: 6;
+}
+
