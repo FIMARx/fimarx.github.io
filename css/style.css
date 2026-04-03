@@ -2969,3 +2969,17 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     z-index: 10;
 }
 
+
+/* V7 FINAL REFINEMENTS */
+/* 1. Kill the HARDCODED 40% vertical line on the right container */
+.edrea_tm_modalbox .about_popup_details .right .right_inner:before {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+}
+
+/* 2. Fix the Trainer line spacing in Typed.js elements if needed */
+.cd-words-wrapper b {
+    font-weight: 600;
+}
+
