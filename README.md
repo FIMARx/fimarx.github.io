@@ -6,8 +6,8 @@
 **Minimalist Design • High Performance • Vanilla Engineering**
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/FIMARx/fimarx.github.io?style=for-the-badge&color=FF720D)](https://github.com/FIMARx/fimarx.github.io/commits/main)
-[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Ffimarx.github.io&style=for-the-badge&color=222)](https://fimarx.github.io)
-[![Tech Stack](https://img.shields.io/badge/Stack-Vanilla_JS_|_CSS3_|_HTML5-blue?style=for-the-badge&color=007acc)](https://fimarx.github.io)
+[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Ffimarx.com&style=for-the-badge&color=222)](https://fimarx.com)
+[![Tech Stack](https://img.shields.io/badge/Stack-Vanilla_JS_|_CSS3_|_HTML5_|_Chart.js-blue?style=for-the-badge&color=007acc)](https://fimarx.com)
 
 </div>
 
@@ -62,7 +62,10 @@ Centered around a deep `#0b0b10` canvas, the UI utilizes a curated **glassmorphi
 Dynamic bio scroller using a time-aware hardware-accelerated script. Features a "Get in Touch" instant navigation gateway.
 
 ### 👤 About & Experience
-An interactive dual-timeline system. Unlike legacy portfolios, it uses a **Static Layout Protocol**—no shifting cards on hover, ensuring a premium, distraction-free reading experience.
+An interactive dual-timeline system. Unlike legacy portfolios, it uses a **Static Layout Protocol**—no shifting cards on hover, ensuring a premium, distraction-free reading experience. Includes a tailored executive biography.
+
+### 📊 Links Network & Growth Engine [New in V16]
+A fully integrated, native Linktree alternative wrapped in pristine glassmorphism. Directly below it sits a self-hosted **Chart.js** bar graph featuring a smart Javascript calculator that automatically tracks MoM follower percentage growth (+X.X% ▲) dynamically.
 
 ### 📂 Project Showcase (Swiper-Integrated)
 A high-performance slider featuring **Instant-Load Modals**. We've optimized the project info popups to strip away unnecessary technical metadata, focusing purely on content and imagery.
@@ -81,7 +84,7 @@ A tailored, floating-label interface. It features **Specificity-Hardened Alignme
 
 <div align="center">
 
-**[Live Website](https://fimarx.github.io)** • **[GitHub Profile](https://github.com/FIMARx)**
+**[Live Website](https://fimarx.com)** • **[GitHub Profile](https://github.com/FIMARx)**
 
 Developed with passion by **FIMARx**
 © 2026. All rights reserved.
