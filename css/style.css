@@ -3628,3 +3628,18 @@ a:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, span:hover,
     width: 100%;
     height: 300px;
 }
+
+/*---------------------------------------------------*/
+/*	V17 GLOBAL UI PATCHES
+/*---------------------------------------------------*/
+
+/* Fix blue outline/focus ring on Safari/Chrome when clicking navigation arrows */
+a, a:active, a:focus, button, button:focus {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Prevent Home rotating text from wrapping incorrectly when FontAwesome icons load */
+.cd-words-wrapper b {
+    white-space: nowrap !important;
+}
