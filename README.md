@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://fimarx.github.io/img/logo/logo.png" alt="FIMARx Logo" width="120" style="margin-bottom: 20px;" />
+<img src="https://fimarx.com/img/logo/logo.png" alt="FIMARx Logo" width="120" style="margin-bottom: 20px;" />
 
 # 🚀 FIMARx Portfolio Ecosystem [2026 Edition]
 **Minimalist Design • High Performance • Vanilla Engineering**
