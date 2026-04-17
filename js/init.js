@@ -28,6 +28,7 @@ jQuery(document).ready(function () {
   edrea_tm_color_switcher();
   edrea_tm_cursor_switcher();
   edrea_tm_switcher_opener();
+  fimarx_social_graph();
 
   if (document.readyState === "complete") {
     edrea_tm_my_load();
@@ -36,6 +37,10 @@ jQuery(document).ready(function () {
       edrea_tm_my_load();
     });
   }
+
+  jQuery(window).on("resize", function () {
+    edrea_tm_smart_menu_reset();
+  });
 });
 
 // -----------------------------------------------------
@@ -141,7 +146,7 @@ function edrea_tm_modalbox() {
   jQuery(".edrea_tm_all_wrap").prepend(
     '<div class="edrea_tm_modalbox"><div class="box_inner"><div class="close"><a hr' +
       'ef="#"><i class="fa-solid fa-xmark"></i></a></div><div class="description_wrap"></di' +
-      "v></div></div>"
+      "v></div></div>",
   );
 }
 
@@ -175,7 +180,9 @@ function edrea_tm_page_transition() {
       if (wrapper.hasClass("opened")) {
         wrapper.find(section).addClass("animated " + exit);
       }
-      parent.addClass("active");
+      jQuery('.transition_link a[href="' + href + '"]')
+        .parent()
+        .addClass("active");
       wrapper.addClass("opened");
       wrapper
         .find(sectionID)
@@ -217,6 +224,20 @@ function edrea_tm_trigger_menu() {
     mobileMenu.removeClass("opened");
     return false;
   });
+}
+
+function edrea_tm_smart_menu_reset() {
+  "use strict";
+
+  var hamburger = jQuery(".edrea_tm_topbar .trigger .hamburger");
+  var mobileMenu = jQuery(".edrea_tm_mobile_menu");
+
+  if (jQuery(window).width() > 1040) {
+    if (hamburger.hasClass("is-active")) {
+      hamburger.removeClass("is-active");
+      mobileMenu.removeClass("opened");
+    }
+  }
 }
 
 // -------------------------------------------------
@@ -273,15 +294,11 @@ function edrea_tm_portfolio_popup() {
         '<div class="top_image"><img src="img/thumbs/4-2.jpg" alt="" /><div class="main' +
           '" data-img-url="' +
           image +
-          '"></div></div>'
+          '"></div></div>',
       );
     modalBox
       .find(".portfolio_popup_details .top_image")
-      .after(
-        '<div class="portfolio_main_title"><h3>' +
-          title +
-          '</h3></div>'
-      );
+      .after('<div class="portfolio_main_title"><h3>' + title + "</h3></div>");
     edrea_tm_data_images();
     edrea_tm_popup();
     return false;
@@ -302,7 +319,7 @@ function edrea_tm_news_popup() {
 
   var modalBox = jQuery(".edrea_tm_modalbox");
   var button = jQuery(
-    ".edrea_tm_news .news_popup,.edrea_tm_news .news_list h3 a"
+    ".edrea_tm_news .news_popup,.edrea_tm_news .news_list h3 a",
   );
   var closePopup = modalBox.find(".close");
 
@@ -321,7 +338,7 @@ function edrea_tm_news_popup() {
         '<div class="top_image"><img src="img/thumbs/4-2.jpg" alt="" /><div class="main' +
           '" data-img-url="' +
           image +
-          '"></div></div>'
+          '"></div></div>',
       );
     modalBox
       .find(".news_popup_details .top_image")
@@ -331,7 +348,7 @@ function edrea_tm_news_popup() {
           "</h3><span>" +
           category +
           "</spa" +
-          "n><div>"
+          "n><div>",
       );
     edrea_tm_data_images();
     return false;
@@ -351,7 +368,7 @@ function edrea_tm_preloader() {
   "use strict";
 
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
-    navigator.userAgent
+    navigator.userAgent,
   )
     ? true
     : false;
@@ -398,33 +415,34 @@ function edrea_tm_cursor() {
       let n,
         i = 0,
         o = !1;
-      (window.onmousemove = function (s) {
-        o ||
+      ((window.onmousemove = function (s) {
+        (o ||
           (t.style.transform =
             "translate(" + s.clientX + "px, " + s.clientY + "px)"),
           (e.style.transform =
             "translate(" + s.clientX + "px, " + s.clientY + "px)"),
           (n = s.clientY),
-          (i = s.clientX);
+          (i = s.clientX));
       }),
         jQuery("body").on(
           "mouseenter",
           "a,.edrea_tm_topbar .trigger, .cursor-pointer",
           function () {
-            e.classList.add("cursor-hover"), t.classList.add("cursor-hover");
-          }
+            (e.classList.add("cursor-hover"), t.classList.add("cursor-hover"));
+          },
         ),
         jQuery("body").on(
           "mouseleave",
           "a,.edrea_tm_topbar .trigger, .cursor-pointer",
           function () {
-            (jQuery(this).is("a") && jQuery(this).closest(".cursor-pointer").length) ||
+            (jQuery(this).is("a") &&
+              jQuery(this).closest(".cursor-pointer").length) ||
               (e.classList.remove("cursor-hover"),
               t.classList.remove("cursor-hover"));
-          }
+          },
         ),
         (e.style.visibility = "visible"),
-        (t.style.visibility = "visible");
+        (t.style.visibility = "visible"));
     }
   }
 }
@@ -458,7 +476,7 @@ function edrea_tm_imgtosvg() {
         // Replace image with new SVG
         jQueryimg.replaceWith(jQuerysvg);
       },
-      "xml"
+      "xml",
     );
   });
 }
@@ -545,7 +563,7 @@ function edrea_tm_contact_form() {
       $form
         .find(".email_error")
         .html(
-          '<span class="contact_error">Please enter a valid email address.</span>'
+          '<span class="contact_error">Please enter a valid email address.</span>',
         );
       return; // Stop form submission
     } else {
@@ -564,27 +582,41 @@ function edrea_tm_contact_form() {
 
     // Update button text to show loading state
     var originalBtnText = $form.find("#sendMessageButton").html();
-    $form.find("#sendMessageButton").html("Sending... <i class='icon-spin'></i>");
+    $form
+      .find("#sendMessageButton")
+      .html("Sending... <i class='icon-spin'></i>");
 
     fetch(actionUrl, {
       method: "POST",
       body: formData,
       headers: {
-        'Accept': 'application/json'
-      }
-    }).then(function(response) {
-      if (response.ok) {
-        $form.find(".first, .last, .edrea_tm_button").slideUp(300);
-        $form.find(".return_message").slideDown(300);
-        $form[0].reset();
-      } else {
-        $form.find(".empty_notice").html("<span>An error occurred. Please try again.</span>").slideDown(500).delay(2000).slideUp(500);
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        if (response.ok) {
+          $form.find(".first, .last, .edrea_tm_button").slideUp(300);
+          $form.find(".return_message").slideDown(300);
+          $form[0].reset();
+        } else {
+          $form
+            .find(".empty_notice")
+            .html("<span>An error occurred. Please try again.</span>")
+            .slideDown(500)
+            .delay(2000)
+            .slideUp(500);
+          $form.find("#sendMessageButton").html(originalBtnText);
+        }
+      })
+      .catch(function (error) {
+        $form
+          .find(".empty_notice")
+          .html("<span>Network error. Please try again.</span>")
+          .slideDown(500)
+          .delay(2000)
+          .slideUp(500);
         $form.find("#sendMessageButton").html(originalBtnText);
-      }
-    }).catch(function(error) {
-      $form.find(".empty_notice").html("<span>Network error. Please try again.</span>").slideDown(500).delay(2000).slideUp(500);
-      $form.find("#sendMessageButton").html(originalBtnText);
-    });
+      });
   });
 }
 
@@ -672,7 +704,7 @@ function edrea_tm_swiper() {
         },
         slideChange: function (swiper) {
           updatePagination(this);
-        }
+        },
       },
       breakpoints: {
         700: {
@@ -696,11 +728,17 @@ function edrea_tm_swiper() {
         scale = parseInt((current / total) * 100) / 100;
       } else {
         scale = parseInt((1 / total) * 100) / 100;
-        translateX = ((current - 1) * parseInt((100 / total) * 100)) / 100 + "px";
+        translateX =
+          ((current - 1) * parseInt((100 / total) * 100)) / 100 + "px";
       }
 
       progressDOM.find(".all span").css({
-        transform: "translate3d(" + translateX + ",0px,0px) scaleX(" + scale + ") scaleY(1)",
+        transform:
+          "translate3d(" +
+          translateX +
+          ",0px,0px) scaleX(" +
+          scale +
+          ") scaleY(1)",
       });
       progressDOM.find(".current").html(current < 10 ? "0" + current : current);
       progressDOM.find(".total").html(total < 10 ? "0" + total : total);
@@ -866,8 +904,12 @@ function edrea_tm_headline() {
       parentSpan.addClass("selected").removeClass("waiting");
       setTimeout(function () {
         parentSpan.removeClass("selected");
-        word.removeClass("is-visible").addClass("is-hidden")
-          .children("i").removeClass("in").addClass("out");
+        word
+          .removeClass("is-visible")
+          .addClass("is-hidden")
+          .children("i")
+          .removeClass("in")
+          .addClass("out");
       }, selectionDuration);
       setTimeout(function () {
         showWord(nextWord, typeLettersDelay);
@@ -877,18 +919,26 @@ function edrea_tm_headline() {
       hideLetter(word.find("i").eq(0), word, bool, lettersDelay);
       showLetter(nextWord.find("i").eq(0), nextWord, bool, lettersDelay);
     } else if (word.parents(".cd-headline").hasClass("clip")) {
-      word.parents(".cd-words-wrapper").animate({ width: "2px" }, revealDuration, function () {
-        switchWord(word, nextWord);
-        showWord(nextWord);
-      });
+      word
+        .parents(".cd-words-wrapper")
+        .animate({ width: "2px" }, revealDuration, function () {
+          switchWord(word, nextWord);
+          showWord(nextWord);
+        });
     } else if (word.parents(".cd-headline").hasClass("loading-bar")) {
       word.parents(".cd-words-wrapper").removeClass("is-loading");
       switchWord(word, nextWord);
-      setTimeout(function () { hideWord(nextWord); }, barAnimationDelay);
-      setTimeout(function () { word.parents(".cd-words-wrapper").addClass("is-loading"); }, barWaiting);
+      setTimeout(function () {
+        hideWord(nextWord);
+      }, barAnimationDelay);
+      setTimeout(function () {
+        word.parents(".cd-words-wrapper").addClass("is-loading");
+      }, barWaiting);
     } else {
       switchWord(word, nextWord);
-      setTimeout(function () { hideWord(nextWord); }, animationDelay);
+      setTimeout(function () {
+        hideWord(nextWord);
+      }, animationDelay);
     }
   }
 
@@ -897,20 +947,31 @@ function edrea_tm_headline() {
       showLetter(word.find("i").eq(0), word, false, duration);
       word.addClass("is-visible").removeClass("is-hidden");
     } else if (word.parents(".cd-headline").hasClass("clip")) {
-      word.parents(".cd-words-wrapper").animate({ width: word.width() + 10 }, revealDuration, function () {
-        setTimeout(function () { hideWord(word); }, revealAnimationDelay);
-      });
+      word
+        .parents(".cd-words-wrapper")
+        .animate({ width: word.width() + 10 }, revealDuration, function () {
+          setTimeout(function () {
+            hideWord(word);
+          }, revealAnimationDelay);
+        });
     }
   }
 
   function hideLetter(letter, word, bool, duration) {
     letter.removeClass("in").addClass("out");
     if (!letter.is(":last-child")) {
-      setTimeout(function () { hideLetter(letter.next(), word, bool, duration); }, duration);
+      setTimeout(function () {
+        hideLetter(letter.next(), word, bool, duration);
+      }, duration);
     } else if (bool) {
-      setTimeout(function () { hideWord(takeNext(word)); }, animationDelay);
+      setTimeout(function () {
+        hideWord(takeNext(word));
+      }, animationDelay);
     }
-    if (letter.is(":last-child") && jQuery("html").hasClass("no-csstransitions")) {
+    if (
+      letter.is(":last-child") &&
+      jQuery("html").hasClass("no-csstransitions")
+    ) {
       switchWord(word, takeNext(word));
     }
   }
@@ -918,21 +979,135 @@ function edrea_tm_headline() {
   function showLetter(letter, word, bool, duration) {
     letter.addClass("in").removeClass("out");
     if (!letter.is(":last-child")) {
-      setTimeout(function () { showLetter(letter.next(), word, bool, duration); }, duration);
+      setTimeout(function () {
+        showLetter(letter.next(), word, bool, duration);
+      }, duration);
     } else {
       if (word.parents(".cd-headline").hasClass("type")) {
-        setTimeout(function () { word.parents(".cd-words-wrapper").addClass("waiting"); }, 200);
+        setTimeout(function () {
+          word.parents(".cd-words-wrapper").addClass("waiting");
+        }, 200);
       }
-      if (!bool) setTimeout(function () { hideWord(word); }, animationDelay);
+      if (!bool)
+        setTimeout(function () {
+          hideWord(word);
+        }, animationDelay);
     }
   }
 
   function takeNext(word) {
-    return !word.is(":last-child") ? word.next() : word.parent().children().eq(0);
+    return !word.is(":last-child")
+      ? word.next()
+      : word.parent().children().eq(0);
   }
 
   function switchWord(oldWord, newWord) {
     oldWord.removeClass("is-visible").addClass("is-hidden");
     newWord.removeClass("is-hidden").addClass("is-visible");
   }
+}
+
+// -------------------------------------------------
+// ---------------   SOCIAL GRAPH  -----------------
+// -------------------------------------------------
+function fimarx_social_graph() {
+  "use strict";
+  var canvasElement = document.getElementById("fimarxSocialGraph");
+  if (!canvasElement) return;
+
+  var ctx = canvasElement.getContext("2d");
+
+  var brandColors = [
+    "#FFFC00", // Snapchat
+    "#FF0000", // YouTube
+    "#00f2fe", // TikTok
+    "#E1306C", // Instagram
+  ];
+
+  // 👉 UPDATE THESE NUMBERS MANUALLY
+  var currentFollowers = [239, 5606, 112, 5082]; // Current follower number
+  var previousFollowers = [230, 5000, 100, 5000]; // Last month numbers
+
+  // -------------------------------------------------
+  // Automatically calculates percentage for the badge
+  // -------------------------------------------------
+  var currentTotal = currentFollowers.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+  var previousTotal = previousFollowers.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+
+  var growthBadge = document.getElementById("growthPercentageBadge");
+  if (growthBadge && previousTotal > 0) {
+    var diff = currentTotal - previousTotal;
+    var percentage = (diff / previousTotal) * 100;
+    var formattedPercentage = percentage.toFixed(1);
+
+    if (percentage >= 0) {
+      growthBadge.innerHTML =
+        "+" +
+        formattedPercentage +
+        "% <i class='fa-solid fa-arrow-trend-up'></i>";
+      growthBadge.className = "growth_badge positive";
+    } else {
+      growthBadge.innerHTML =
+        formattedPercentage + "% <i class='fa-solid fa-arrow-trend-down'></i>";
+      growthBadge.className = "growth_badge negative";
+    }
+  }
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Snapchat", "YouTube", "TikTok", "Instagram"],
+      datasets: [
+        {
+          label: "Followers",
+          data: currentFollowers,
+          backgroundColor: brandColors,
+          borderWidth: 0,
+          borderRadius: 6,
+          barPercentage: 0.6,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          titleColor: "#fff",
+          bodyColor: "#fff",
+          bodyFont: { family: "'Inter', sans-serif", size: 14 },
+          padding: 12,
+          cornerRadius: 8,
+          displayColors: false,
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { display: true, color: "rgba(255, 255, 255, 0.05)" },
+          ticks: {
+            color: "rgba(255, 255, 255, 0.5)",
+            font: { family: "'Inter', sans-serif" },
+            padding: 10,
+          },
+          border: { display: false },
+        },
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: "rgba(255, 255, 255, 0.7)",
+            font: { family: "'Inter', sans-serif" },
+            padding: 10,
+          },
+          border: { display: false },
+        },
+      },
+    },
+  });
 }

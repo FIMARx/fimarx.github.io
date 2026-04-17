@@ -3250,10 +3250,6 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     transition: all 0.3s ease;
 }
 
-.timeline_card:hover .timeline_icon {
-    /* transform: scale(1.2); */
-    /* text-shadow: 0 0 10px rgba(255, 114, 13, 0.6); */
-}
 
 /* 2. Adjust the Track Line to account for Icon gaps */
 .premium_timeline .timeline_list::before {
@@ -3326,17 +3322,28 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif !important; font-weig
     position: absolute !important;
     top: 0 !important;
     bottom: 0 !important;
-    height: auto !important;
+    height: 100% !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    overflow: visible !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
     z-index: 10 !important;
+}
+
+/* Invisible scrollbar for aesthetic purposes */
+.edrea_tm_section::-webkit-scrollbar {
+    width: 0px !important;
+    background: transparent !important;
+}
+.edrea_tm_section {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
 }
 
 /* Force inner wrapper to stretch regardless of implicit height limitations */
 .edrea_tm_section.active:not(.hidden) .section_inner {
-    height: 100% !important;
+    height: auto !important;
     min-height: 100%;
 }
 
@@ -3410,4 +3417,214 @@ a:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, span:hover,
 /* 5. PRESERVE HERO HEADLINE ROLES CYCLE ONLY */
 .cd-words-wrapper b {
     transition-duration: 0.5s !important;
+}
+
+/*---------------------------------------------------*/
+/*	V15 LINKTREE STYLE SOCIALS
+/*---------------------------------------------------*/
+
+.linktree_wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 120px 20px 100px;
+    text-align: center;
+}
+
+.linktree_profile {
+    margin-bottom: 35px;
+}
+
+.linktree_profile .image {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.1) !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4) !important;
+    transition: border-color 0.3s ease !important;
+}
+
+.linktree_profile:hover .image {
+    border-color: var(--main-color) !important;
+}
+
+.linktree_profile .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.linktree_profile h3 {
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.linktree_profile p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+}
+
+.linktree_links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.linktree_wrapper a.link_btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    width: 100% !important;
+    padding: 18px 50px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    backdrop-filter: blur(10px) !important;
+    overflow: hidden !important;
+}
+
+.linktree_wrapper a.link_btn i {
+    position: absolute !important;
+    left: 20px !important;
+    font-size: 20px !important;
+    z-index: 1 !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Specific Brand Colors Overlay */
+.linktree_wrapper a.link_btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: var(--btn-color) !important;
+    opacity: 0 !important;
+    z-index: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.linktree_wrapper a.link_btn span {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.linktree_wrapper a.link_btn:hover {
+    transform: translateY(-4px) !important;
+    border-color: transparent !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.linktree_wrapper a.link_btn:hover::before {
+    opacity: 1 !important;
+}
+
+.linktree_wrapper a.link_btn:hover span,
+.linktree_wrapper a.link_btn:hover i {
+    color: var(--btn-text) !important;
+}
+
+.linktree_divider {
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Brand Configs */
+.link_btn.snapchat { --btn-color: #FFFC00; --btn-text: #000; }
+.link_btn.snapchat i { color: #FFFC00 !important; }
+
+.link_btn.youtube { --btn-color: #FF0000; --btn-text: #fff; }
+.link_btn.youtube i { color: #FF0000 !important; }
+
+.link_btn.tiktok { --btn-color: #00f2fe; --btn-text: #000; }
+.link_btn.tiktok i { color: #00f2fe !important; }
+
+.link_btn.instagram { --btn-color: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); --btn-text: #fff; }
+.link_btn.instagram i { color: #E1306C !important; }
+
+.link_btn.discord { --btn-color: #5865F2; --btn-text: #fff; }
+.link_btn.discord i { color: #5865F2 !important; }
+
+.link_btn.x_twitter { --btn-color: #fff; --btn-text: #000; }
+.link_btn.x_twitter i { color: #fff !important; }
+
+/*---------------------------------------------------*/
+/*	V16 SOCIAL MEDIA GRAPH
+/*---------------------------------------------------*/
+
+.social_graph_container {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto 0;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    text-align: left;
+    backdrop-filter: blur(10px);
+}
+
+.social_graph_container .graph_header_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.social_graph_container h4 {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.growth_badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.growth_badge.positive {
+    background: rgba(0, 255, 136, 0.15);
+    color: #00ff88;
+}
+
+.growth_badge.negative {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff4444;
+}
+
+.social_graph_container .graph_subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.social_graph_container .canvas_wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
 }
