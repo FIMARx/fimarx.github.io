@@ -29,9 +29,13 @@ jQuery(document).ready(function () {
   edrea_tm_cursor_switcher();
   edrea_tm_switcher_opener();
 
-  jQuery(window).load("body", function () {
+  if (document.readyState === "complete") {
     edrea_tm_my_load();
-  });
+  } else {
+    jQuery(window).on("load", function () {
+      edrea_tm_my_load();
+    });
+  }
 });
 
 // -----------------------------------------------------
@@ -92,35 +96,38 @@ function edrea_tm_my_progress() {
 function edrea_tm_circular_progress() {
   "use strict";
 
-  var circVal = 110;
-
-  var colorSchemes = jQuery(":root").css("--main-color");
-
+  // CSS conic-gradient circular progress (no SVG — avoids innerHTML namespace issues)
   jQuery(".circular_progress_bar .myCircle").each(function () {
-    var element = jQuery(this);
-    element.append('<span class="number"></span>');
-    var value = element.data("value");
-    element
-      .circleProgress({
-        size: circVal,
-        value: 0,
-        animation: {
-          duration: 1400,
-        },
-        thickness: 2,
-        fill: colorSchemes,
-        emptyFill: "rgba(0,0,0,0)",
-        startAngle: -Math.PI / 2,
-      })
-      .on("circle-animation-progress", function (event, progress, stepValue) {
-        element
-          .find(".number")
-          .text(parseInt(stepValue.toFixed(2) * 100) + "%");
-      });
-    element.circleProgress("value", 1.0);
+    var el = this;
+    var $el = jQuery(el);
+    var targetValue = parseFloat($el.data("value")); // 0.0 – 1.0
+    var pct = Math.round(targetValue * 100);
+
+    $el.html('<span class="number">' + pct + "%</span>");
+    el.style.background =
+      "conic-gradient(#fa5b0f 0%, rgba(255,255,255,0.08) 0%)";
+
+    var startTime = null;
+    var duration = 1400;
+
+    function animate(ts) {
+      if (!startTime) startTime = ts;
+      var p = Math.min((ts - startTime) / duration, 1);
+      // Ease-out cubic
+      var eased = 1 - Math.pow(1 - p, 3);
+      var cur = eased * targetValue * 100;
+      el.style.background =
+        "conic-gradient(#fa5b0f " +
+        cur.toFixed(2) +
+        "%, rgba(255,255,255,0.08) " +
+        cur.toFixed(2) +
+        "%)";
+      if (p < 1) requestAnimationFrame(animate);
+    }
+
     setTimeout(function () {
-      element.circleProgress("value", value);
-    }, 1400);
+      requestAnimationFrame(animate);
+    }, 150);
   });
 }
 
@@ -273,9 +280,7 @@ function edrea_tm_portfolio_popup() {
       .after(
         '<div class="portfolio_main_title"><h3>' +
           title +
-          '</h3><span><a href="#">' +
-          category +
-          "</a></span><div>"
+          '</h3></div>'
       );
     edrea_tm_data_images();
     edrea_tm_popup();
@@ -350,7 +355,7 @@ function edrea_tm_preloader() {
   )
     ? true
     : false;
-  var preloader = $("#preloader");
+  var preloader = jQuery("#preloader");
 
   if (!isMobile) {
     setTimeout(function () {
@@ -387,7 +392,7 @@ function edrea_tm_cursor() {
   var myCursor = jQuery(".mouse-cursor");
 
   if (myCursor.length) {
-    if ($("body")) {
+    if (jQuery("body")) {
       const e = document.querySelector(".cursor-inner"),
         t = document.querySelector(".cursor-outer");
       let n,
@@ -402,18 +407,18 @@ function edrea_tm_cursor() {
           (n = s.clientY),
           (i = s.clientX);
       }),
-        $("body").on(
+        jQuery("body").on(
           "mouseenter",
           "a,.edrea_tm_topbar .trigger, .cursor-pointer",
           function () {
             e.classList.add("cursor-hover"), t.classList.add("cursor-hover");
           }
         ),
-        $("body").on(
+        jQuery("body").on(
           "mouseleave",
           "a,.edrea_tm_topbar .trigger, .cursor-pointer",
           function () {
-            ($(this).is("a") && $(this).closest(".cursor-pointer").length) ||
+            (jQuery(this).is("a") && jQuery(this).closest(".cursor-pointer").length) ||
               (e.classList.remove("cursor-hover"),
               t.classList.remove("cursor-hover"));
           }
@@ -592,30 +597,11 @@ jQuery(document).ready(function () {
 // --------------    OWL CAROUSEL    -------------------
 // -----------------------------------------------------
 
+// Owl Carousel removed — testimonial carousel HTML is commented out.
+// Stub prevents errors when edrea_tm_about_popup calls this function.
 function edrea_tm_mycarousel() {
   "use strict";
-
-  var carousel = jQuery(".edrea_tm_modalbox .owl-carousel");
-
-  carousel.owlCarousel({
-    loop: true,
-    items: 1,
-    lazyLoad: false,
-    margin: 0,
-    autoplay: true,
-    autoplayTimeout: 7000,
-    dots: false,
-    nav: false,
-    navSpeed: false,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 1,
-      },
-    },
-  });
+  // No-op: owl-carousel markup is not in the DOM.
 }
 
 // -----------------------------------------------------
@@ -624,14 +610,14 @@ function edrea_tm_mycarousel() {
 
 function hashtag() {
   "use strict";
-  var ccc = $(".edrea_tm_header .menu .ccc");
-  var element = $(".edrea_tm_header .menu .active a");
-  $(".edrea_tm_header .menu a").on("mouseenter", function () {
-    var e = $(this);
+  var ccc = jQuery(".edrea_tm_header .menu .ccc");
+  var element = jQuery(".edrea_tm_header .menu .active a");
+  jQuery(".edrea_tm_header .menu a").on("mouseenter", function () {
+    var e = jQuery(this);
     currentLink(ccc, e);
   });
-  $(".edrea_tm_header .menu").on("mouseleave", function () {
-    element = $(".edrea_tm_header .menu .active a");
+  jQuery(".edrea_tm_header .menu").on("mouseleave", function () {
+    element = jQuery(".edrea_tm_header .menu .active a");
     currentLink(ccc, element);
     element.parent().siblings().removeClass("mleave");
   });
@@ -645,7 +631,7 @@ function currentLink(ccc, e) {
   }
   var left = e.offset().left;
   var width = e.outerWidth();
-  var menuleft = $(".edrea_tm_header .menu").offset().left;
+  var menuleft = jQuery(".edrea_tm_header .menu").offset().left;
   e.parent().removeClass("mleave");
   e.parent().siblings().addClass("mleave");
   ccc.css({
@@ -661,14 +647,16 @@ function currentLink(ccc, e) {
 function edrea_tm_swiper() {
   "use strict";
 
-  $(".swiper-section").each(function () {
-    var element = $(this);
-    var container = element.find(".swiper-container");
-    var mySwiper = new Swiper(container, {
+  jQuery(".swiper-section").each(function () {
+    var element = jQuery(this);
+    // Swiper v12: container class changed from .swiper-container to .swiper
+    var containerEl = element.find(".swiper")[0];
+    var progressDOM = element.find(".edrea_tm_swiper_progress");
+
+    var mySwiper = new Swiper(containerEl, {
       loop: false,
       slidesPerView: 1,
       spaceBetween: 0,
-      loopAdditionalSlides: 1,
       autoplay: {
         delay: 6000,
       },
@@ -678,39 +666,13 @@ function edrea_tm_swiper() {
         prevEl: ".my_prev",
       },
 
-      pagination: {
-        el: ".edrea_tm_swiper_progress",
-        type: "custom", // progressbar
-        renderCustom: function (swiper, current, total) {
-          // progress animation
-          var scale, translateX;
-          var progressDOM = container.find(".edrea_tm_swiper_progress");
-          if (progressDOM.hasClass("fill")) {
-            translateX = "0px";
-            scale = parseInt((current / total) * 100) / 100;
-          } else {
-            scale = parseInt((1 / total) * 100) / 100;
-            translateX =
-              ((current - 1) * parseInt((100 / total) * 100)) / 100 + "px";
-          }
-
-          progressDOM.find(".all span").css({
-            transform:
-              "translate3d(" +
-              translateX +
-              ",0px,0px) scaleX(" +
-              scale +
-              ") scaleY(1)",
-          });
-          if (current < 10) {
-            current = "0" + current;
-          }
-          if (total < 10) {
-            total = "0" + total;
-          }
-          progressDOM.find(".current").html(current);
-          progressDOM.find(".total").html(total);
+      on: {
+        init: function (swiper) {
+          updatePagination(this);
         },
+        slideChange: function (swiper) {
+          updatePagination(this);
+        }
       },
       breakpoints: {
         700: {
@@ -723,6 +685,26 @@ function edrea_tm_swiper() {
         },
       },
     });
+
+    function updatePagination(swiper) {
+      if (!swiper || !swiper.slides) return;
+      var current = swiper.realIndex + 1;
+      var total = swiper.slides.length;
+      var scale, translateX;
+      if (progressDOM.hasClass("fill")) {
+        translateX = "0px";
+        scale = parseInt((current / total) * 100) / 100;
+      } else {
+        scale = parseInt((1 / total) * 100) / 100;
+        translateX = ((current - 1) * parseInt((100 / total) * 100)) / 100 + "px";
+      }
+
+      progressDOM.find(".all span").css({
+        transform: "translate3d(" + translateX + ",0px,0px) scaleX(" + scale + ") scaleY(1)",
+      });
+      progressDOM.find(".current").html(current < 10 ? "0" + current : current);
+      progressDOM.find(".total").html(total < 10 ? "0" + total : total);
+    }
   });
   edrea_tm_imgtosvg();
 }
@@ -806,3 +788,151 @@ function edrea_tm_switcher_opener() {
   });
 }
 
+// -----------------------------------------------------
+// ---------------   HEADLINE ANIMATION  ---------------
+// -----------------------------------------------------
+// Restored from plugins.js (removed during cleanup) — modernized to use jQuery
+
+function edrea_tm_headline() {
+  "use strict";
+
+  if (!jQuery(".cd-headline").length) return; // Guard: no animated headline present
+
+  var animationDelay = 2500,
+    barAnimationDelay = 3800,
+    barWaiting = barAnimationDelay - 3000,
+    lettersDelay = 50,
+    typeLettersDelay = 150,
+    selectionDuration = 500,
+    typeAnimationDelay = selectionDuration + 800,
+    revealDuration = 600,
+    revealAnimationDelay = 1500;
+
+  initHeadline();
+
+  function initHeadline() {
+    singleLetters(jQuery(".cd-headline.letters").find("b"));
+    animateHeadline(jQuery(".cd-headline"));
+  }
+
+  function singleLetters(words) {
+    words.each(function () {
+      var word = jQuery(this),
+        letters = word.text().split(""),
+        selected = word.hasClass("is-visible");
+      for (var i in letters) {
+        if (word.parents(".rotate-2").length > 0)
+          letters[i] = "<em>" + letters[i] + "</em>";
+        letters[i] = selected
+          ? '<i class="in">' + letters[i] + "</i>"
+          : "<i>" + letters[i] + "</i>";
+      }
+      word.html(letters.join("")).css("opacity", 1);
+    });
+  }
+
+  function animateHeadline(headlines) {
+    var duration = animationDelay;
+    headlines.each(function () {
+      var headline = jQuery(this);
+      if (headline.hasClass("loading-bar")) {
+        duration = barAnimationDelay;
+        setTimeout(function () {
+          headline.find(".cd-words-wrapper").addClass("is-loading");
+        }, barWaiting);
+      } else if (headline.hasClass("clip")) {
+        var spanWrapper = headline.find(".cd-words-wrapper"),
+          newWidth = spanWrapper.width() + 10;
+        spanWrapper.css("width", newWidth);
+      } else if (!headline.hasClass("type")) {
+        var words = headline.find(".cd-words-wrapper b"),
+          width = 0;
+        words.each(function () {
+          var wordWidth = jQuery(this).width();
+          if (wordWidth > width) width = wordWidth;
+        });
+        headline.find(".cd-words-wrapper").css("width", width);
+      }
+      setTimeout(function () {
+        hideWord(headline.find(".is-visible").eq(0));
+      }, duration);
+    });
+  }
+
+  function hideWord(word) {
+    var nextWord = takeNext(word);
+    if (word.parents(".cd-headline").hasClass("type")) {
+      var parentSpan = word.parent(".cd-words-wrapper");
+      parentSpan.addClass("selected").removeClass("waiting");
+      setTimeout(function () {
+        parentSpan.removeClass("selected");
+        word.removeClass("is-visible").addClass("is-hidden")
+          .children("i").removeClass("in").addClass("out");
+      }, selectionDuration);
+      setTimeout(function () {
+        showWord(nextWord, typeLettersDelay);
+      }, typeAnimationDelay);
+    } else if (word.parents(".cd-headline").hasClass("letters")) {
+      var bool = word.children("i").length >= nextWord.children("i").length;
+      hideLetter(word.find("i").eq(0), word, bool, lettersDelay);
+      showLetter(nextWord.find("i").eq(0), nextWord, bool, lettersDelay);
+    } else if (word.parents(".cd-headline").hasClass("clip")) {
+      word.parents(".cd-words-wrapper").animate({ width: "2px" }, revealDuration, function () {
+        switchWord(word, nextWord);
+        showWord(nextWord);
+      });
+    } else if (word.parents(".cd-headline").hasClass("loading-bar")) {
+      word.parents(".cd-words-wrapper").removeClass("is-loading");
+      switchWord(word, nextWord);
+      setTimeout(function () { hideWord(nextWord); }, barAnimationDelay);
+      setTimeout(function () { word.parents(".cd-words-wrapper").addClass("is-loading"); }, barWaiting);
+    } else {
+      switchWord(word, nextWord);
+      setTimeout(function () { hideWord(nextWord); }, animationDelay);
+    }
+  }
+
+  function showWord(word, duration) {
+    if (word.parents(".cd-headline").hasClass("type")) {
+      showLetter(word.find("i").eq(0), word, false, duration);
+      word.addClass("is-visible").removeClass("is-hidden");
+    } else if (word.parents(".cd-headline").hasClass("clip")) {
+      word.parents(".cd-words-wrapper").animate({ width: word.width() + 10 }, revealDuration, function () {
+        setTimeout(function () { hideWord(word); }, revealAnimationDelay);
+      });
+    }
+  }
+
+  function hideLetter(letter, word, bool, duration) {
+    letter.removeClass("in").addClass("out");
+    if (!letter.is(":last-child")) {
+      setTimeout(function () { hideLetter(letter.next(), word, bool, duration); }, duration);
+    } else if (bool) {
+      setTimeout(function () { hideWord(takeNext(word)); }, animationDelay);
+    }
+    if (letter.is(":last-child") && jQuery("html").hasClass("no-csstransitions")) {
+      switchWord(word, takeNext(word));
+    }
+  }
+
+  function showLetter(letter, word, bool, duration) {
+    letter.addClass("in").removeClass("out");
+    if (!letter.is(":last-child")) {
+      setTimeout(function () { showLetter(letter.next(), word, bool, duration); }, duration);
+    } else {
+      if (word.parents(".cd-headline").hasClass("type")) {
+        setTimeout(function () { word.parents(".cd-words-wrapper").addClass("waiting"); }, 200);
+      }
+      if (!bool) setTimeout(function () { hideWord(word); }, animationDelay);
+    }
+  }
+
+  function takeNext(word) {
+    return !word.is(":last-child") ? word.next() : word.parent().children().eq(0);
+  }
+
+  function switchWord(oldWord, newWord) {
+    oldWord.removeClass("is-visible").addClass("is-hidden");
+    newWord.removeClass("is-hidden").addClass("is-visible");
+  }
+}

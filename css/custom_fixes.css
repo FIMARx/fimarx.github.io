@@ -1,0 +1,48 @@
+/* 
+   PREMIUM MODAL & FORM FIXES 2026 
+   Ensures perfect centering and left-corner alignment 
+*/
+
+/* 1. Modal Close Button Centering */
+.edrea_tm_modalbox .close a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+.edrea_tm_modalbox .close a i {
+    position: static !important;
+    transform: none !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    font-size: 18px !important;
+}
+
+/* 2. Responsive Modal Adjustments */
+@media (max-width: 1040px) {
+    .edrea_tm_modalbox .close a {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .edrea_tm_modalbox .close a i {
+        font-size: 14px !important;
+    }
+}
+
+/* 3. Contact Form Left-Corner Text Alignment */
+/* Using high-specificity selectors to override legacy !important rules */
+.edrea_tm_contact .fields .first ul li .premium_input_container input,
+.edrea_tm_contact .fields .last .premium_input_container textarea,
+.edrea_tm_contact .fields .first ul li input, 
+.edrea_tm_contact .fields .last textarea,
+.premium_input_container input,
+.premium_input_container textarea {
+    padding-left: 0 !important;
+    text-indent: 0 !important;
+}
+
+/* Align floating labels and icons perfectly to the left edge */
+.premium_input_container label {
+    left: 0 !important;
+}
